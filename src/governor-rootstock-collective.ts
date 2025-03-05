@@ -227,7 +227,7 @@ export function handleVoteCast(event: VoteCastEvent): void {
   let proposal = Proposal.load(event.params.proposalId.toHexString())!;
 
   entity.voter = account.id;
-  entity.proposalId = proposal.id
+  entity.proposal = proposal.id
   entity.support = event.params.support
   entity.weight = event.params.weight
   entity.reason = event.params.reason

@@ -48,6 +48,8 @@ type Proposal @entity {
   events: [ProposalEvent!]! @derivedFrom(field: "proposal")
   "The state of the proposal"
   state: ProposalState!
+  "The votes associated with this proposal"
+  votes: [VoteCast!]! @derivedFrom(field: "proposal")
 }
 
 interface ProposalEvent {
@@ -136,7 +138,7 @@ type VoteCast @entity(immutable: true) {
   "The account that cast the vote"
   voter: Account! 
   "The proposal that was voted on"
-  proposalId: ProposalCreated!
+  proposal: Proposal!
   "The support for the proposal (0 against, 1 for, 2 abstain)"
   support: Int! # uint8
   "The weight of the vote"
